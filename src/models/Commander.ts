@@ -2,7 +2,7 @@ import { readFileSync } from 'fs';
 import { Bus } from './Bus';
 import { ICmd } from './interfaces/ICmd';
 
-class Commander {
+export class Commander {
     public static load(content: string): Commander {
         const commander = new Commander();
         commander.commands = content
