@@ -13,6 +13,6 @@ trim_trailing_whitespace = true
 [*.{json,css,sass,scss}]
 indent_size = 2
 
-[*.md]
+[*.{md,txt}]
 insert_final_newline = false
 trim_trailing_whitespace = false
