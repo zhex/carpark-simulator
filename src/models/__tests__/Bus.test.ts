@@ -74,4 +74,16 @@ describe('Bus', () => {
         expect(bus.faceTo).toBe(Direction.East);
         expect(bus.position.x).toBe(1);
     });
+
+    it('should clone a bus intance', () => {
+        bus.place(2, 3, Direction.South);
+        const bus2 = bus.clone();
+
+        expect(bus2).not.toBe(bus);
+        expect(bus2.park).toBe(bus.park);
+        expect(bus2.position).not.toBe(bus.position);
+        expect(bus2.position.x).toBe(bus.position.x);
+        expect(bus2.position.y).toBe(bus.position.y);
+        expect(bus.faceTo).toBe(bus.faceTo);
+    });
 });
