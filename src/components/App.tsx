@@ -36,38 +36,50 @@ export default class App extends React.Component<IAppProps, IAppStates> {
     }
 
     public render() {
-        const { commands } = this.props;
-        const { bus, cmdIdx, started } = this.state;
-
         return (
             <div style={{ width: 800, margin: '40px auto' }}>
                 <h1>Car Park Simulator</h1>
                 <div style={{ display: 'flex' }}>
-                    <div style={{ flex: 1 }}>
-                        <CarPark
-                            cols={bus.park.cols}
-                            rows={bus.park.rows}
-                            cellSize={this.cellSize}>
-                            {bus.position && (
-                                <BusComp
-                                    x={bus.position.x}
-                                    y={bus.position.y}
-                                    cellSize={this.cellSize}
-                                    faceTo={bus.faceTo}
-                                />
-                            )}
-                        </CarPark>
-                    </div>
-                    <div style={{ flex: 1 }}>
-                        <CmdList commands={commands} currentIdx={cmdIdx} />
-                        <button onClick={this.run} disabled={started}>
-                            RUN
-                        </button>
-                        <button onClick={this.reset} disabled={started}>
-                            RESET
-                        </button>
-                    </div>
+                    {this.renderLeft()}
+                    {this.renderRight()}
                 </div>
+            </div>
+        );
+    }
+
+    private renderLeft(): JSX.Element {
+        const { bus } = this.state;
+        return (
+            <div style={{ flex: 1 }}>
+                <CarPark
+                    cols={bus.park.cols}
+                    rows={bus.park.rows}
+                    cellSize={this.cellSize}>
+                    {bus.position && (
+                        <BusComp
+                            x={bus.position.x}
+                            y={bus.position.y}
+                            cellSize={this.cellSize}
+                            faceTo={bus.faceTo}
+                        />
+                    )}
+                </CarPark>
+            </div>
+        );
+    }
+
+    private renderRight(): JSX.Element {
+        const { commands } = this.props;
+        const { cmdIdx, started } = this.state;
+        return (
+            <div style={{ flex: 1 }}>
+                <CmdList commands={commands} currentIdx={cmdIdx} />
+                <button onClick={this.run} disabled={started}>
+                    RUN
+                </button>
+                <button onClick={this.reset} disabled={started}>
+                    RESET
+                </button>
             </div>
         );
     }
