@@ -56,11 +56,13 @@ const CarPark: React.SFC<ICarParkProps> = props => {
                     ))}
                 </StyledRow>
             ))}
+            {props.children}
         </div>
     );
 };
 
 const StyledCarPark = styled(CarPark)`
+    position: relative;
     width: ${p => `${p.cellSize! * p.cols}px`};
     border-top: 1px solid #ccc;
     border-left: 1px solid #ccc;

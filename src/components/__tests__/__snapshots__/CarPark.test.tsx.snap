@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CarPark 1`] = `
+exports[`CarPark Component 1`] = `
 .c2 {
   position: relative;
   border-right: 1px solid #ccc;
@@ -19,6 +19,7 @@ exports[`CarPark 1`] = `
 }
 
 .c0 {
+  position: relative;
   width: 250px;
   border-top: 1px solid #ccc;
   border-left: 1px solid #ccc;
@@ -125,7 +126,7 @@ exports[`CarPark 1`] = `
 </div>
 `;
 
-exports[`Cell 1`] = `
+exports[`Cell Component 1`] = `
 .c0 {
   position: relative;
   border-right: 1px solid #ccc;
@@ -141,7 +142,7 @@ exports[`Cell 1`] = `
 />
 `;
 
-exports[`Row 1`] = `
+exports[`Row Component 1`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;

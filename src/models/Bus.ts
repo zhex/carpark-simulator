@@ -92,7 +92,7 @@ export class Bus {
 
     public clone(): Bus {
         const b = new Bus(this.park);
-        b.position = {...this.position};
+        b.position = { ...this.position };
         b.faceTo = this.faceTo;
         return b;
     }

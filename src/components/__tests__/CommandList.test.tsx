@@ -11,7 +11,7 @@ const commands = [
     { name: 'REPORT', args: [] },
 ];
 
-it('CommandList', () => {
+it('CommandList Component', () => {
     const tree = create(
         <CommandList commands={commands} currentIdx={2} />,
     ).toJSON();

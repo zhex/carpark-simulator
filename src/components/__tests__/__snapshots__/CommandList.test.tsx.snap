@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CommandList 1`] = `
+exports[`CommandList Component 1`] = `
 .c0 {
   padding: 10px;
   border-bottom: 1px solid #ccc;

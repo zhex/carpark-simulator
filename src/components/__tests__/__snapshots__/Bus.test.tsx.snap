@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bus Component 1`] = `
+.c0 {
+  position: absolute;
+  float: left;
+  border-style: solid;
+  border-width: 0 10px 15px;
+  border-color: transparent transparent #dd4397 transparent;
+  left: 15px;
+  bottom: 21.25px;
+  -webkit-transform: translate( 250px, -250px ) rotate(0deg);
+  -ms-transform: translate( 250px, -250px ) rotate(0deg);
+  transform: translate( 250px, -250px ) rotate(0deg);
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+
+<div
+  className="c0"
+/>
+`;
