@@ -11,7 +11,7 @@ export enum Direction {
 const directionText = ['NORTH', 'EAST', 'SOUTH', 'WEST'];
 
 export class Bus {
-    public position: IPosition;
+    public position?: IPosition;
     public faceTo: Direction;
 
     constructor(public park: Park) {}
@@ -37,7 +37,7 @@ export class Bus {
     }
 
     public move(): Bus {
-        const next = { ...this.position };
+        const next = { ...this.position! };
 
         switch (this.faceTo) {
             case Direction.North:
@@ -77,8 +77,8 @@ export class Bus {
 
     public report(): Bus {
         const msg = [
-            this.position.x,
-            this.position.y,
+            this.position!.x,
+            this.position!.y,
             directionText[this.faceTo - 1],
         ].join(',');
         console.log(msg);
@@ -92,7 +92,7 @@ export class Bus {
 
     public clone(): Bus {
         const b = new Bus(this.park);
-        b.position = { ...this.position };
+        b.position = this.position ? { ...this.position } : undefined;
         b.faceTo = this.faceTo;
         return b;
     }

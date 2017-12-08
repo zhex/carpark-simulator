@@ -6,8 +6,6 @@ import styled from 'styled-components';
 export interface ICarParkProps {
     rows: number;
     cols: number;
-    position?: IPosition;
-    faceTo?: Direction;
     className?: string;
     cellSize: number;
 }
@@ -46,7 +44,7 @@ export const StyledRow = styled(Row)`
 `;
 
 const CarPark: React.SFC<ICarParkProps> = props => {
-    const { faceTo, position, rows, cols, className, cellSize } = props;
+    const { rows, cols, className, cellSize } = props;
     return (
         <div className={className}>
             {createArray(rows).map((row, idx) => (

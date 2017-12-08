@@ -19,8 +19,8 @@ describe('Bus', () => {
         });
 
         it('should place in position and faceTo one of the direction', () => {
-            expect(bus.position.x).toBe(0);
-            expect(bus.position.y).toBe(1);
+            expect(bus.position!.x).toBe(0);
+            expect(bus.position!.y).toBe(1);
             expect(bus.faceTo).toBe(Direction.North);
         });
 
@@ -46,14 +46,14 @@ describe('Bus', () => {
 
         it('should move toward the face-to direction', () => {
             bus.move();
-            expect(bus.position.y).toBe(2);
+            expect(bus.position!.y).toBe(2);
             bus.right().move();
-            expect(bus.position.x).toBe(1);
+            expect(bus.position!.x).toBe(1);
         });
 
         it('should move within park boundary', () => {
             bus.left().move();
-            expect(bus.position.x).toBe(0);
+            expect(bus.position!.x).toBe(0);
         })
 
         it('should report the current status', () => {
@@ -72,7 +72,7 @@ describe('Bus', () => {
             .command('RIGHT')
             .command('MOVE');
         expect(bus.faceTo).toBe(Direction.East);
-        expect(bus.position.x).toBe(1);
+        expect(bus.position!.x).toBe(1);
     });
 
     it('should clone a bus intance', () => {
@@ -82,8 +82,8 @@ describe('Bus', () => {
         expect(bus2).not.toBe(bus);
         expect(bus2.park).toBe(bus.park);
         expect(bus2.position).not.toBe(bus.position);
-        expect(bus2.position.x).toBe(bus.position.x);
-        expect(bus2.position.y).toBe(bus.position.y);
+        expect(bus2.position!.x).toBe(bus.position!.x);
+        expect(bus2.position!.y).toBe(bus.position!.y);
         expect(bus.faceTo).toBe(bus.faceTo);
     });
 });

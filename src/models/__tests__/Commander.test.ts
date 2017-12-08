@@ -31,8 +31,8 @@ describe('Commander', () => {
         const cmder = Commander.loadFile(join(__dirname, 'cmd.txt'));
         cmder.execute(bus);
 
-        expect(bus.position.x).toBe(0);
-        expect(bus.position.y).toBe(1);
+        expect(bus.position!.x).toBe(0);
+        expect(bus.position!.y).toBe(1);
         expect(bus.faceTo).toBe(Direction.East);
     });
 });

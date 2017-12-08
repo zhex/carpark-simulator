@@ -24,7 +24,7 @@ const StyledBus = styled(Bus)`
     bottom: ${p => `${(p.cellSize - 15 / 2) / 2}px`};
     transform: translate(
             ${p => `${p.x * p.cellSize}px`},
-            ${p => `${-1 * p.x * p.cellSize}px`}
+            ${p => `${-1 * p.y * p.cellSize}px`}
         )
         rotate(${p => ((p.faceTo || 1) - 1) * 90}deg);
     transition: 0.3s all ease;
