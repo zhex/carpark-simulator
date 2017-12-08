@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommandList 1`] = `
+.c0 {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.c0:last-of-type {
+  border-bottom: none;
+}
+
+.c1 {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  background: lightgreen;
+}
+
+.c1:last-of-type {
+  border-bottom: none;
+}
+
+<ul
+  className={undefined}
+>
+  <li
+    className="c0"
+  >
+    PLACE
+    <span>
+       - 
+      0, 0, NORTH
+    </span>
+  </li>
+  <li
+    className="c0"
+  >
+    MOVE
+  </li>
+  <li
+    className="c1"
+  >
+    RIGHT
+  </li>
+  <li
+    className="c0"
+  >
+    REPORT
+  </li>
+</ul>
+`;

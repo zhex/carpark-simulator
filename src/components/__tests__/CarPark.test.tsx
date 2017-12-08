@@ -21,4 +21,4 @@ it('Row', () => {
     const tree = create(<StyledRow />).toJSON();
     expect(tree).toMatchSnapshot();
     expect(tree).toHaveStyleRule('display', 'flex');
-})
+});
