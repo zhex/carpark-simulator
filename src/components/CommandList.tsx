@@ -34,4 +34,10 @@ const CommandList: React.SFC<ICommandListProps> = props => (
     </ul>
 );
 
-export default CommandList;
+const StyledList = styled(CommandList)`
+    margin: 0;
+    padding: 0;
+    list-style: none;
+`;
+
+export default StyledList;

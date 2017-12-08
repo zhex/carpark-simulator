@@ -23,7 +23,7 @@ export default class App extends React.Component<IAppProps, IAppStates> {
         commandInterval: 500,
     };
 
-    private cellSize = 50;
+    private cellSize = 70;
 
     constructor(props: IAppProps) {
         super(props);
@@ -38,26 +38,29 @@ export default class App extends React.Component<IAppProps, IAppStates> {
         const { bus, cmdIdx } = this.state;
 
         return (
-            <div style={{ display: 'flex', width: 800, margin: '40px auto' }}>
-                <div style={{ flex: 1 }}>
-                    <CarPark
-                        cols={bus.park.cols}
-                        rows={bus.park.rows}
-                        cellSize={this.cellSize}>
-                        {bus.position && (
-                            <BusComp
-                                x={bus.position.x}
-                                y={bus.position.y}
-                                cellSize={this.cellSize}
-                                faceTo={bus.faceTo}
-                            />
-                        )}
-                    </CarPark>
-                </div>
-                <div style={{ flex: 1 }}>
-                    <CmdList commands={commands} currentIdx={cmdIdx} />
-                    <button onClick={this.run}>RUN</button>
-                    <button onClick={this.reset}>RESET</button>
+            <div style={{ width: 800, margin: '40px auto' }}>
+                <h1>Car Park Simulator</h1>
+                <div style={{ display: 'flex' }}>
+                    <div style={{ flex: 1 }}>
+                        <CarPark
+                            cols={bus.park.cols}
+                            rows={bus.park.rows}
+                            cellSize={this.cellSize}>
+                            {bus.position && (
+                                <BusComp
+                                    x={bus.position.x}
+                                    y={bus.position.y}
+                                    cellSize={this.cellSize}
+                                    faceTo={bus.faceTo}
+                                />
+                            )}
+                        </CarPark>
+                    </div>
+                    <div style={{ flex: 1 }}>
+                        <CmdList commands={commands} currentIdx={cmdIdx} />
+                        <button onClick={this.run}>RUN</button>
+                        <button onClick={this.reset}>RESET</button>
+                    </div>
                 </div>
             </div>
         );
