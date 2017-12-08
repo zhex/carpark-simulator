@@ -37,4 +37,7 @@ module.exports = {
     watchOptions: {
         ignored: [/node_modules/, distPath],
     },
+    node: {
+        fs: 'empty',
+    },
 };
