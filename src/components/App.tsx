@@ -16,6 +16,7 @@ export interface IAppProps {
 interface IAppStates {
     cmdIdx: number;
     bus: Bus;
+    started: boolean;
 }
 
 export default class App extends React.Component<IAppProps, IAppStates> {
@@ -30,12 +31,13 @@ export default class App extends React.Component<IAppProps, IAppStates> {
         this.state = {
             cmdIdx: -1,
             bus: props.bus.clone(),
+            started: false,
         };
     }
 
     public render() {
         const { commands } = this.props;
-        const { bus, cmdIdx } = this.state;
+        const { bus, cmdIdx, started } = this.state;
 
         return (
             <div style={{ width: 800, margin: '40px auto' }}>
@@ -58,8 +60,12 @@ export default class App extends React.Component<IAppProps, IAppStates> {
                     </div>
                     <div style={{ flex: 1 }}>
                         <CmdList commands={commands} currentIdx={cmdIdx} />
-                        <button onClick={this.run}>RUN</button>
-                        <button onClick={this.reset}>RESET</button>
+                        <button onClick={this.run} disabled={started}>
+                            RUN
+                        </button>
+                        <button onClick={this.reset} disabled={started}>
+                            RESET
+                        </button>
                     </div>
                 </div>
             </div>
@@ -72,12 +78,13 @@ export default class App extends React.Component<IAppProps, IAppStates> {
 
         const idx = this.state.cmdIdx + 1;
         if (idx >= commands.length) {
+            this.setState({ started: false });
             return;
         }
 
         const cmd = commands[idx];
         bus.command(cmd.name, cmd.args);
-        this.setState({ cmdIdx: idx }, () =>
+        this.setState({ cmdIdx: idx, started: true }, () =>
             setTimeout(this.run, commandInterval),
         );
     };
