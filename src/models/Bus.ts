@@ -37,6 +37,8 @@ export class Bus {
     }
 
     public move(): Bus {
+        this.positionCheck();
+
         const next = { ...this.position! };
 
         switch (this.faceTo) {
@@ -60,6 +62,8 @@ export class Bus {
     }
 
     public left(): Bus {
+        this.positionCheck();
+
         this.faceTo = this.faceTo - 1;
         if (this.faceTo < Direction.North) {
             this.faceTo = Direction.West;
@@ -68,6 +72,8 @@ export class Bus {
     }
 
     public right(): Bus {
+        this.positionCheck();
+
         this.faceTo = this.faceTo + 1;
         if (this.faceTo > Direction.West) {
             this.faceTo = Direction.North;
@@ -76,6 +82,8 @@ export class Bus {
     }
 
     public report(): Bus {
+        this.positionCheck();
+
         const msg = [
             this.position!.x,
             this.position!.y,
@@ -95,5 +103,11 @@ export class Bus {
         b.position = this.position ? { ...this.position } : undefined;
         b.faceTo = this.faceTo;
         return b;
+    }
+
+    private positionCheck() {
+        if (!this.position) {
+            throw new Error('please run `place` method to set position and direction first');
+        }
     }
 }
