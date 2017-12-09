@@ -86,4 +86,12 @@ describe('Bus', () => {
         expect(bus2.position!.y).toBe(bus.position!.y);
         expect(bus.faceTo).toBe(bus.faceTo);
     });
+
+    it('should throw error if position is not exist', () => {
+        try {
+            bus.move();
+        } catch (err) {
+            expect(err.message).toEqual('please run `place` method to set position and direction first');
+        }
+    });
 });
