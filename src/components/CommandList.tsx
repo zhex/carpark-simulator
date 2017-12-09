@@ -35,7 +35,7 @@ const CommandList: React.SFC<ICommandListProps> = props => (
 );
 
 const StyledList = styled(CommandList)`
-    margin: 0;
+    margin: 0 0 20px;
     padding: 0;
     list-style: none;
 `;

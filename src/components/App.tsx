@@ -3,7 +3,9 @@ import * as React from 'react';
 import { Bus } from 'models/Bus';
 import { ICmd } from 'models/interfaces/ICmd';
 
+import Box, { Container } from 'components/Box';
 import BusComp from 'components/Bus';
+import Button, { PrimaryButton } from 'components/Button';
 import CarPark from 'components/CarPark';
 import CmdList from 'components/CommandList';
 
@@ -39,10 +41,10 @@ export default class App extends React.Component<IAppProps, IAppStates> {
         return (
             <div style={{ width: 800, margin: '40px auto' }}>
                 <h1>Car Park Simulator</h1>
-                <div style={{ display: 'flex' }}>
+                <Container>
                     {this.renderLeft()}
                     {this.renderRight()}
-                </div>
+                </Container>
             </div>
         );
     }
@@ -50,7 +52,7 @@ export default class App extends React.Component<IAppProps, IAppStates> {
     private renderLeft(): JSX.Element {
         const { bus } = this.state;
         return (
-            <div style={{ flex: 1 }}>
+            <Box>
                 <CarPark
                     cols={bus.park.cols}
                     rows={bus.park.rows}
@@ -64,7 +66,7 @@ export default class App extends React.Component<IAppProps, IAppStates> {
                         />
                     )}
                 </CarPark>
-            </div>
+            </Box>
         );
     }
 
@@ -72,15 +74,15 @@ export default class App extends React.Component<IAppProps, IAppStates> {
         const { commands } = this.props;
         const { cmdIdx, started } = this.state;
         return (
-            <div style={{ flex: 1 }}>
+            <Box>
                 <CmdList commands={commands} currentIdx={cmdIdx} />
-                <button onClick={this.run} disabled={started}>
+                <PrimaryButton onClick={this.run} disabled={started}>
                     RUN
-                </button>
-                <button onClick={this.reset} disabled={started}>
+                </PrimaryButton>
+                <Button onClick={this.reset} disabled={started}>
                     RESET
-                </button>
-            </div>
+                </Button>
+            </Box>
         );
     }
 
