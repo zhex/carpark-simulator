@@ -25,10 +25,10 @@ interface IAppStates {
 
 export default class App extends React.Component<IAppProps, IAppStates> {
     public static defaultProps = {
-        commandInterval: 500,
+        commandInterval: 300,
     };
 
-    private cellSize = 50;
+    private cellSize = 40;
     private input: HTMLTextAreaElement | null;
 
     constructor(props: IAppProps) {
@@ -70,6 +70,7 @@ export default class App extends React.Component<IAppProps, IAppStates> {
                             y={bus.position.y}
                             cellSize={this.cellSize}
                             faceTo={bus.faceTo}
+                            speed={this.props.commandInterval}
                         />
                     )}
                 </CarPark>

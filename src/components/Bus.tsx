@@ -10,6 +10,7 @@ export interface IBusProps {
     cellSize: number;
     width?: number;
     height?: number;
+    speed?: number;
 }
 
 const Bus: React.SFC<IBusProps> = props => <div className={props.className} />;
@@ -27,12 +28,13 @@ const StyledBus = styled(Bus)`
             ${p => `${-1 * p.y * p.cellSize}px`}
         )
         rotate(${p => ((p.faceTo || 1) - 1) * 90}deg);
-    transition: 0.3s all ease;
+    transition: ${p => `${p.speed}ms`} all ease;
 `;
 
 StyledBus.defaultProps = {
     width: 20,
     height: 15,
+    speed: 500,
 };
 
 export default StyledBus;

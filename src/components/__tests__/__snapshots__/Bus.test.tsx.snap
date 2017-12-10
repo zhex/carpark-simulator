@@ -12,8 +12,8 @@ exports[`Bus Component 1`] = `
   -webkit-transform: translate( 250px, -250px ) rotate(0deg);
   -ms-transform: translate( 250px, -250px ) rotate(0deg);
   transform: translate( 250px, -250px ) rotate(0deg);
-  -webkit-transition: 0.3s all ease;
-  transition: 0.3s all ease;
+  -webkit-transition: 500ms all ease;
+  transition: 500ms all ease;
 }
 
 <div
