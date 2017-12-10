@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { Bus } from 'models/Bus';
+import { Commander } from 'models/Commander';
 import { ICmd } from 'models/interfaces/ICmd';
 
 import Box, { Container } from 'components/Box';
@@ -10,7 +11,6 @@ import CarPark from 'components/CarPark';
 import CmdList from 'components/CommandList';
 
 export interface IAppProps {
-    commands: ICmd[];
     bus: Bus;
     commandInterval?: number;
 }
@@ -19,6 +19,8 @@ interface IAppStates {
     cmdIdx: number;
     bus: Bus;
     started: boolean;
+    inSetting: boolean;
+    commands: ICmd[];
 }
 
 export default class App extends React.Component<IAppProps, IAppStates> {
@@ -26,30 +28,35 @@ export default class App extends React.Component<IAppProps, IAppStates> {
         commandInterval: 500,
     };
 
-    private cellSize = 70;
+    private cellSize = 50;
+    private input: HTMLTextAreaElement | null;
 
     constructor(props: IAppProps) {
         super(props);
+
         this.state = {
             cmdIdx: -1,
             bus: props.bus.clone(),
             started: false,
+            commands: [],
+            inSetting: true,
         };
     }
 
     public render() {
+        const { inSetting } = this.state;
         return (
             <div style={{ width: 800, margin: '40px auto' }}>
                 <h1>Car Park Simulator</h1>
                 <Container>
-                    {this.renderLeft()}
-                    {this.renderRight()}
+                    {this.renderCarPark()}
+                    {inSetting ? this.renderSetting() : this.renderList()}
                 </Container>
             </div>
         );
     }
 
-    private renderLeft(): JSX.Element {
+    private renderCarPark(): JSX.Element {
         const { bus } = this.state;
         return (
             <Box>
@@ -70,9 +77,8 @@ export default class App extends React.Component<IAppProps, IAppStates> {
         );
     }
 
-    private renderRight(): JSX.Element {
-        const { commands } = this.props;
-        const { cmdIdx, started } = this.state;
+    private renderList(): JSX.Element {
+        const { cmdIdx, started, commands } = this.state;
         return (
             <Box>
                 <CmdList commands={commands} currentIdx={cmdIdx} />
@@ -86,9 +92,30 @@ export default class App extends React.Component<IAppProps, IAppStates> {
         );
     }
 
+    private renderSetting(): JSX.Element {
+        return (
+            <Box>
+                <textarea
+                    ref={el => (this.input = el)}
+                    placeholder="please enter your commands here"
+                />
+                <PrimaryButton onClick={this.save}>SAVE</PrimaryButton>
+            </Box>
+        );
+    }
+
+    private save = () => {
+        const commandText = this.input!.value;
+        if (commandText === '') {
+            return;
+        }
+        const cmder = Commander.load(commandText);
+        this.setState({ commands: cmder.commands, inSetting: false });
+    };
+
     private run = () => {
-        const { commands, commandInterval } = this.props;
-        const { bus } = this.state;
+        const { commandInterval } = this.props;
+        const { bus, commands } = this.state;
 
         const idx = this.state.cmdIdx + 1;
         if (idx >= commands.length) {

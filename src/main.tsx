@@ -7,22 +7,10 @@ import { Park } from 'models/Park';
 
 import App from 'components/App';
 
-const commandContent = `
-PLACE 0,0,NORTH
-RIGHT
-MOVE
-MOVE
-LEFT
-MOVE
-MOVE
-REPORT
-`;
-
-const park = new Park(5, 5);
+const park = new Park(7, 7);
 const bus = new Bus(park);
-const cmder = Commander.load(commandContent);
 
 render(
-    <App bus={bus} commands={cmder.commands} />,
+    <App bus={bus}/>,
     document.getElementById('app'),
 );
