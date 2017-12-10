@@ -117,17 +117,25 @@ export default class App extends React.Component<IAppProps, IAppStates> {
 
     private run = () => {
         const { commandInterval } = this.props;
-        const { bus, commands } = this.state;
+        const { bus, commands, cmdIdx, started } = this.state;
 
-        const idx = this.state.cmdIdx + 1;
+        if (
+            (cmdIdx === -1 || cmdIdx >= commands.length - 1) &&
+            started === false
+        ) {
+            this.reset();
+            this.setState({ started: true }, this.run);
+            return;
+        }
+
+        const idx = cmdIdx + 1;
         if (idx >= commands.length) {
             this.setState({ started: false });
             return;
         }
-
         const cmd = commands[idx];
         bus.command(cmd.name, cmd.args);
-        this.setState({ cmdIdx: idx, started: true }, () =>
+        this.setState({ cmdIdx: idx }, () =>
             setTimeout(this.run, commandInterval),
         );
     };
