@@ -1,4 +1,4 @@
-# carpark-simulator
+# carpark-simulator ![build status](https://api.travis-ci.org/zhex/carpark-simulator.svg)
 
 ## Pre-requirements
 
