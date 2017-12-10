@@ -7,7 +7,7 @@ import { Park } from 'models/Park';
 
 import App from 'components/App';
 
-const park = new Park(10, 10);
+const park = new Park(5, 5);
 const bus = new Bus(park);
 
 render(

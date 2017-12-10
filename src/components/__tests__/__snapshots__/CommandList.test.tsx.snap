@@ -2,22 +2,22 @@
 
 exports[`CommandList Component 1`] = `
 .c1 {
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-}
-
-.c1:last-of-type {
-  border-bottom: none;
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 5px;
+  font-size: 13px;
 }
 
 .c2 {
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 5px;
+  font-size: 13px;
   background: lightgreen;
-}
-
-.c2:last-of-type {
-  border-bottom: none;
 }
 
 .c0 {

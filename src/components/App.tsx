@@ -25,10 +25,10 @@ interface IAppStates {
 
 export default class App extends React.Component<IAppProps, IAppStates> {
     public static defaultProps = {
-        commandInterval: 300,
+        commandInterval: 500,
     };
 
-    private cellSize = 40;
+    private cellSize = 80;
     private input: HTMLTextAreaElement | null;
 
     constructor(props: IAppProps) {

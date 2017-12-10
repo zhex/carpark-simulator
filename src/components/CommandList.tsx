@@ -9,11 +9,12 @@ export interface ICommandListProps {
 }
 
 const ListItem = styled.li`
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-    &:last-of-type {
-        border-bottom: none;
-    }
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 5px;
+    font-size: 13px;
 `;
 
 const ListItemActive = ListItem.extend`
