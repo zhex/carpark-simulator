@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommandList Component 1`] = `
+.c0 {
+  display: block;
+  height: 200px;
+  width: 100%;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+<textarea
+  className="c0"
+/>
+`;

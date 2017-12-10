@@ -8,6 +8,7 @@ import Box, { Container } from 'components/Box';
 import BusComp from 'components/Bus';
 import Button, { PrimaryButton } from 'components/Button';
 import CarPark from 'components/CarPark';
+import CommandInput from 'components/CommandInput';
 import CmdList from 'components/CommandList';
 
 export interface IAppProps {
@@ -28,7 +29,7 @@ export default class App extends React.Component<IAppProps, IAppStates> {
         commandInterval: 500,
     };
 
-    private cellSize = 80;
+    private cellSize = 70;
     private input: HTMLTextAreaElement | null;
 
     constructor(props: IAppProps) {
@@ -96,8 +97,8 @@ export default class App extends React.Component<IAppProps, IAppStates> {
     private renderSetting(): JSX.Element {
         return (
             <Box>
-                <textarea
-                    ref={el => (this.input = el)}
+                <CommandInput
+                    innerRef={el => (this.input = el)}
                     placeholder="please enter your commands here"
                 />
                 <PrimaryButton onClick={this.save}>SAVE</PrimaryButton>
