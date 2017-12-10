@@ -22,6 +22,7 @@ interface IAppStates {
     started: boolean;
     inSetting: boolean;
     commands: ICmd[];
+    commandText?: string;
 }
 
 export default class App extends React.Component<IAppProps, IAppStates> {
@@ -30,7 +31,6 @@ export default class App extends React.Component<IAppProps, IAppStates> {
     };
 
     private cellSize = 70;
-    private input: HTMLTextAreaElement | null;
 
     constructor(props: IAppProps) {
         super(props);
@@ -87,8 +87,8 @@ export default class App extends React.Component<IAppProps, IAppStates> {
                 <PrimaryButton onClick={this.run} disabled={started}>
                     RUN
                 </PrimaryButton>
-                <Button onClick={this.reset} disabled={started}>
-                    RESET
+                <Button onClick={this.gotoSetting} disabled={started}>
+                    Setting
                 </Button>
             </Box>
         );
@@ -98,21 +98,31 @@ export default class App extends React.Component<IAppProps, IAppStates> {
         return (
             <Box>
                 <CommandInput
-                    innerRef={el => (this.input = el)}
+                    value={this.state.commandText}
                     placeholder="please enter your commands here"
+                    onChange={this.onTextChange}
                 />
                 <PrimaryButton onClick={this.save}>SAVE</PrimaryButton>
             </Box>
         );
     }
 
+    private onTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        this.setState({ commandText: e.target.value });
+    }
+
     private save = () => {
-        const commandText = this.input!.value;
+        const { commandText } = this.state;
         if (commandText === '') {
             return;
         }
-        const cmder = Commander.load(commandText);
+        const cmder = Commander.load(commandText!);
         this.setState({ commands: cmder.commands, inSetting: false });
+    };
+
+    private gotoSetting = () => {
+        this.reset();
+        this.setState({ inSetting: true });
     };
 
     private run = () => {
