@@ -7,6 +7,7 @@ const CommandInput = styled.textarea`
     width: 100%;
     font-size: 14px;
     margin-bottom: 20px;
+    resize: none;
 `;
 
 export default CommandInput;
